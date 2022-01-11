@@ -1,16 +1,40 @@
 import { Alert, AlertTitle, Button, CircularProgress, Grid, Link, Stack, Typography } from "@mui/material"
 import { Box } from "@mui/system"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/layout"
 import { connectKeplr } from "../utils/keplr"
 import LoadingButton from '@mui/lab/LoadingButton';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 
 const IndexPage = () => {
 
   const [claiming, setClaiming] = useState(false)
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [totalClaimed, setTotalClaimed] = useState(0);
+
+
+
+  // on load
+  useEffect(() => {
+    async function load() {
+      try {
+        var client = await CosmWasmClient.connect(process.env.GATSBY_CHAIN_RPC)
+        var data = await client.queryContractSmart(process.env.GATSBY_CONTRACT_ADDRESS, {total_claimed: {stage:1}})
+  
+        if (data.total_claimed > 0) {
+          setTotalClaimed(data.total_claimed/1000000)
+        }
+      } catch (error) 
+      {
+        console.error(error)
+      }
+  
+    }
+
+    load()
+  }, [])
 
   const claim = async () => {
     try {
@@ -95,6 +119,8 @@ const IndexPage = () => {
       <Box>
         <Typography align="center" variant="h2" component="h1" mt={5}>NETA Money</Typography>
         <Typography align="center" variant="h3" component="h2" mb={5}>Decentralized Store of Value</Typography>
+
+        <Typography align="center" variant="h2" component="h1" mt={5}>Total claimed so far: <b>{totalClaimed} Test NETA</b></Typography>
 
         {error && 
         <Alert severity="error" >
