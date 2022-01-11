@@ -20,21 +20,20 @@ const IndexPage = () => {
       setClaiming(true)
 
       const [signingClient, accounts] = await connectKeplr({
-        name: "Dimi Testnet",
-        chain_id: "dimi-test",
-        lcd: "http://127.0.0.1:1317",
-        rpc: "http://127.0.0.1:26657",
-        coinDenom: "JUNO",
-        coinMinimalDenom: "ujunox",
+        name: process.env.GATSBY_CHAIN_NAME,
+        chain_id: process.env.GATSBY_CHAIN_ID,
+        lcd: process.env.GATSBY_CHAIN_LCD,
+        rpc: process.env.GATSBY_CHAIN_RPC,
+        coinDenom: process.env.GATSBY_COIN_DENOM,
+        coinMinimalDenom: process.env.GATSBY_COIN_MIN_DENOM,
         prefix: "juno",
         version: "stargate",
         decimals: 6,
-        group: "mainnet",
         features: ["stargate", 'ibc-transfer', 'cosmwasm', 'no-legacy-stdTx', 'ibc-go'],
         gasPriceStep: {
           low: 0.0,
           average: 0.01,
-          high: 0.025
+          high: 0.1
         }
       })
 
@@ -58,18 +57,18 @@ const IndexPage = () => {
 
       const data = await signingClient.execute(
         accounts[0].address,
-        "juno1nc5tatafv6eyq7llkr2gv50ff9e22mnf70qgjlv737ktmt4eswrq68ev2p", 
+        process.env.GATSBY_CONTRACT_ADDRESS, 
         msg, 
         { 
           gas: "250000", 
-          amount: [{ denom: "ujunox", amount: "0" }] 
+          amount: [{ denom: "ujunox", amount: "250000" }] 
         }
       )
       console.log(data)
 
       if (data.logs.length > 0) {
         setSuccess({
-          message: `Successfully claimed ${claimData.amount / 1000000} NETA`, 
+          message: `Successfully claimed ${claimData.amount / 1000000} Test NETA`, 
           amount: claimData.amount, 
           hash: data.transactionHash
         })
