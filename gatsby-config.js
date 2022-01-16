@@ -1,6 +1,6 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
@@ -20,6 +20,18 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "NETA Money",
+        short_name: "NETA",
+        start_url: "/",
+        background_color: "#F0827D",
+        theme_color: "#F0827D",
+        display: "standalone",
+        icon: "src/images/favicon.png",
+      },
     },
   ],
 };
