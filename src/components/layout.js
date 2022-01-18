@@ -5,6 +5,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { Container } from "@mui/material";
 import Helmet from "react-helmet";
 
+import Footer from "./footer";
+import Background from "./background";
+
 export default function Layout({ children }) {
   return (
     <ThemeProvider theme={theme}>
@@ -16,10 +19,12 @@ export default function Layout({ children }) {
           rel="stylesheet"
         />
       </Helmet>
+      <Background />
       <Container>
         <CssBaseline />
         {children}
       </Container>
+      <Footer />
     </ThemeProvider>
   );
 }

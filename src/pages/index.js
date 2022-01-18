@@ -4,13 +4,14 @@ import {
   AlertTitle,
   Button,
   CircularProgress,
+  Card,
+  CardActions,
   CardContent,
   Grid,
   Link,
   Stack,
   Typography,
   Divider,
-  Card,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
@@ -20,6 +21,8 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 
 import logo from "../images/logo.png";
+
+import ClaimCard from "../components/card";
 
 const IndexPage = () => {
   const [claiming, setClaiming] = useState(false);
@@ -151,90 +154,79 @@ const IndexPage = () => {
               <Typography variant="h1">NETA Money</Typography>
               <Typography variant="h3">Decentralized Store of Value</Typography>
             </Box>
-            <Typography variant="subtitle1" mb={4}>
-              To claim the airdrop you must sign a message using Keplr. <br />
-              Press the button below when ready.
-            </Typography>
-            <LoadingButton
-              variant="contained"
-              size="large"
-              color="primary"
-              onClick={claim}
-              loading={claiming}
-            >
-              Connect Wallet and Claim
-            </LoadingButton>
+            {!success && (
+              <>
+                <Typography variant="subtitle1" mb={4}>
+                  To claim the airdrop you must sign a message using Keplr.{" "}
+                  <br />
+                  Press the button below when ready.
+                </Typography>
+                <LoadingButton
+                  variant="contained"
+                  size="large"
+                  color="primary"
+                  onClick={claim}
+                  loading={claiming}
+                >
+                  Connect Wallet and Claim
+                </LoadingButton>
+              </>
+            )}
+
+            <Box my={4}>
+              {error && (
+                <Alert severity="error">
+                  <AlertTitle>Error</AlertTitle>
+                  {error}
+                </Alert>
+              )}
+
+              {success && (
+                <Card
+                  sx={{
+                    borderRadius: "16px",
+                    maxWidth: "480px",
+                    boxShadow: "0px 30px 40px rgba(212, 217, 232, 0.2)",
+                  }}
+                >
+                  <CardContent sx={{ padding: "40px 40px 0 40px" }}>
+                    <Typography variant="h3" mb={4}>
+                      Congratulations!
+                    </Typography>
+                    <Typography variant="subtitle1" mb={4}>
+                      {success.message}
+                    </Typography>
+                  </CardContent>
+                  <CardActions sx={{ padding: "10px 40px 40px 40px" }}>
+                    <Button
+                      component={Link}
+                      startIcon={<OpenInNewIcon />}
+                      href={`https://mintscan.io/juno/txs/${success.hash}`}
+                      target="_blank"
+                      size="large"
+                      color="neutral"
+                      sx={{
+                        padding: 0,
+                        textTransform: "uppercase",
+                        fontWeight: "normal",
+                      }}
+                    >
+                      See on Explorer
+                    </Button>
+                  </CardActions>
+                </Card>
+              )}
+            </Box>
           </Grid>
           <Grid item sm={4}>
-            <Card
-              sx={{
-                backgroundColor: "#000",
-                color: "#fff",
-                borderRadius: "24px",
-              }}
-            >
-              <Box py={7.5} px={5}>
-                <Typography
-                  variant="h5"
-                  mb={3}
-                  sx={{ textTransform: "uppercase" }}
-                >
-                  Total claimed so far:
-                </Typography>
-                <Typography variant="h2" color="primary.main">
-                  {totalClaimed}
-                </Typography>
-                <Typography variant="h5" color="primary.main">
-                  Test NETA
-                </Typography>
-                <Box mt={2} mb={5.25}>
-                  <Divider />
-                </Box>
-                <Typography variant="h5">
-                  until{" "}
-                  <Typography
-                    variant="h5"
-                    component="span"
-                    color="primary.main"
-                    px={0.5}
-                  >
-                    2938849 NETA
-                  </Typography>{" "}
-                  will be burn
-                </Typography>
-              </Box>
-            </Card>
+            {/* TODO: add proper time */}
+            <ClaimCard
+              dateEnd={1642982400000}
+              totalClaimed={totalClaimed}
+              claimingGoal={2938849}
+            />
           </Grid>
         </Grid>
-        <Box>
-          {error && (
-            <Alert severity="error">
-              <AlertTitle>Error</AlertTitle>
-              {error}
-            </Alert>
-          )}
-
-          {success && (
-            <Alert
-              severity="success"
-              action={
-                <Button
-                  component={Link}
-                  startIcon={<OpenInNewIcon />}
-                  href={`https://mintscan.io/juno/txs/${success.hash}`}
-                  target="_blank"
-                  size="small"
-                  color="success"
-                >
-                  See on Explorer
-                </Button>
-              }
-            >
-              <AlertTitle>Success</AlertTitle>
-              {success.message}
-            </Alert>
-          )}
-        </Box>
       </Box>
     </Layout>
   );

@@ -41,6 +41,15 @@ const theme = createTheme({
         lineHeight: "44px",
       },
     },
+    h4: {
+      fontWeight: 700,
+      fontSize: "20px",
+      lineHeight: "33px",
+      "@media (min-width:600px)": {
+        fontSize: "26px",
+        lineHeight: "38px",
+      },
+    },
     h5: {
       fontWeight: 700,
       fontSize: "16px",
@@ -55,6 +64,15 @@ const theme = createTheme({
         lineHeight: "32px",
       },
     },
+    subtitle2: {
+      fontWeight: 600,
+      fontSize: "11px",
+      lineHeight: "20px",
+      "@media (min-width:600px)": {
+        fontSize: "14px",
+        lineHeight: "24px",
+      },
+    },
     button: {
       textTransform: "none",
       fontWeight: 600,
@@ -66,8 +84,8 @@ const theme = createTheme({
       main: "#F0827D",
     },
     neutral: {
-      main: "#fff",
-      contrastText: "#fff",
+      main: "#949494",
+      contrastText: "#949494",
     },
   },
   components: {
