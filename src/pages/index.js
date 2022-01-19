@@ -137,22 +137,30 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <Box py={8}>
+      <Box py={{ xs: 4, md: 8 }}>
         <Box
           textAlign="center"
-          marginBottom={10}
-          sx={{ pointerEvents: "none", fontSize: 0 }}
+          marginBottom={{ xs: 4, sm: 10 }}
+          sx={{
+            pointerEvents: "none",
+            fontSize: 0,
+            "@media (max-width:599px)": {
+              img: {
+                width: "80px",
+              },
+            },
+          }}
         >
           <img src={logo} width={160} />
         </Box>
-        <Grid container spacing={5.25}>
-          <Grid item md={8}>
-            <Box mb={4}>
+        <Grid container spacing={{ xs: 2, md: 5.25 }}>
+          <Grid item xs={12} md={8}>
+            <Box mb={4} textAlign={{ xs: "center", md: "left" }}>
               <Typography variant="h1">NETA Money</Typography>
               <Typography variant="h3">Decentralized Store of Value</Typography>
             </Box>
             {!success && (
-              <>
+              <Box textAlign={{ xs: "center", md: "left" }}>
                 <Typography variant="subtitle1" mb={4}>
                   To claim the airdrop you must sign a message using Keplr.{" "}
                   <br />
@@ -167,7 +175,7 @@ const IndexPage = () => {
                 >
                   Connect Wallet and Claim
                 </LoadingButton>
-              </>
+              </Box>
             )}
 
             <Box my={4}>
@@ -215,8 +223,8 @@ const IndexPage = () => {
               )}
             </Box>
           </Grid>
-          <Grid item md={4}>
-            {/* TODO: add proper time */}
+          <Grid xs={12} item md={4}>
+            {/* TODO: add proper time and claimingGoal */}
             <ClaimCard
               dateEnd={1642982400000}
               totalClaimed={totalClaimed}

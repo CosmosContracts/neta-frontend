@@ -22,7 +22,12 @@ export default function Footer({ children }) {
       py={3}
     >
       <Container>
-        <Grid container spacing={1} alignItems="center">
+        <Grid
+          container
+          spacing={1}
+          alignItems="center"
+          justifyContent={{ xs: "center", sm: "flex-start" }}
+        >
           <Grid item sm={8}>
             <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <img src={logo} width={30} />
@@ -41,16 +46,28 @@ export default function Footer({ children }) {
               }}
               justifyContent={{ xs: "flex-end" }}
             >
-              <Link href="#" p={0.4}>
+              <Link
+                href="https://twitter.com/netamoney?s=21"
+                target="_blank"
+                rel="noopener noreferrer"
+                p={0.4}
+              >
                 <img src={twitter} width={24} />
               </Link>
-              <Link href="#" p={0.4}>
+              <Link
+                href="https://discord.gg/Juno"
+                target="_blank"
+                rel="noopener noreferrer"
+                p={0.4}
+              >
                 <img src={discord} width={24} />
               </Link>
-              <Link href="#" p={0.4}>
-                <img src={reddit} width={24} />
-              </Link>
-              <Link href="#" p={0.4}>
+              <Link
+                href="https://github.com/cosmoscontracts"
+                target="_blank"
+                rel="noopener noreferrer"
+                p={0.4}
+              >
                 <img src={github} width={24} />
               </Link>
             </Box>

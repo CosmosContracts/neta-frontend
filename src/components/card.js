@@ -37,8 +37,6 @@ const ClaimCard = ({ dateEnd, totalClaimed, claimingGoal }) => {
     }
   };
 
-  console.log(Date.now());
-
   return (
     <Card
       sx={{

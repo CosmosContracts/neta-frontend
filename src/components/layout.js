@@ -12,7 +12,14 @@ import Background from "./background";
 const global = (
   <GlobalStyles
     styles={{
-      body: { position: "relative", minHeight: "100vh", paddingBottom: "70px" },
+      body: {
+        position: "relative",
+        minHeight: "100vh",
+        paddingBottom: "70px",
+        "@media (max-width:599px)": {
+          paddingBottom: "140px",
+        },
+      },
     }}
   />
 );
