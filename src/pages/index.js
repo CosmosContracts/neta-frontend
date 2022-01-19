@@ -3,15 +3,12 @@ import {
   Alert,
   AlertTitle,
   Button,
-  CircularProgress,
   Card,
   CardActions,
   CardContent,
   Grid,
   Link,
-  Stack,
   Typography,
-  Divider,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
@@ -149,7 +146,7 @@ const IndexPage = () => {
           <img src={logo} width={160} />
         </Box>
         <Grid container spacing={5.25}>
-          <Grid item sm={8}>
+          <Grid item md={8}>
             <Box mb={4}>
               <Typography variant="h1">NETA Money</Typography>
               <Typography variant="h3">Decentralized Store of Value</Typography>
@@ -218,7 +215,7 @@ const IndexPage = () => {
               )}
             </Box>
           </Grid>
-          <Grid item sm={4}>
+          <Grid item md={4}>
             {/* TODO: add proper time */}
             <ClaimCard
               dateEnd={1642982400000}

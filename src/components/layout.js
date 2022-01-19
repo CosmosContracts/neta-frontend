@@ -2,11 +2,20 @@ import React from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import CssBaseline from "@mui/material/CssBaseline";
+import GlobalStyles from "@mui/material/GlobalStyles";
 import { Container } from "@mui/material";
 import Helmet from "react-helmet";
 
 import Footer from "./footer";
 import Background from "./background";
+
+const global = (
+  <GlobalStyles
+    styles={{
+      body: { position: "relative", minHeight: "100vh", paddingBottom: "70px" },
+    }}
+  />
+);
 
 export default function Layout({ children }) {
   return (
@@ -22,6 +31,7 @@ export default function Layout({ children }) {
       <Background />
       <Container>
         <CssBaseline />
+        {global}
         {children}
       </Container>
       <Footer />
