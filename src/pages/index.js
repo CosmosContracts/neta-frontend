@@ -228,7 +228,7 @@ const IndexPage = () => {
             <ClaimCard
               dateEnd={1642982400000}
               totalClaimed={totalClaimed}
-              claimingGoal={2938849}
+              claimingGoal={32950}
             />
           </Grid>
         </Grid>
