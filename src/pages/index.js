@@ -124,16 +124,20 @@ const IndexPage = () => {
       setClaiming(false);
     }
   };
-
-  DateCountdown.defaultProps = {
-    locales: ['y :', 'm :', 'd :', 'h :', 'm :', 's'],
-    locales_plural: ['y :', 'm :', 'd :', 'h :', 'm :', 's'],
-    dateTo: (new Date()).toString(),
-    dateFrom: (new Date()).toString(),
-    callback: () => alert("Time's Up"),
-    mostSignificantFigure: 'd',
-    numberOfFigures: 6,
-    noAnimate: false,
+  
+  if (typeof window !== `undefined`) {
+    DateCountdown.defaultProps = {
+      locales: ['y :', 'm :', 'd :', 'h :', 'm :', 's'],
+      locales_plural: ['y :', 'm :', 'd :', 'h :', 'm :', 's'],
+      dateTo: (new Date()).toString(),
+      dateFrom: (new Date()).toString(),
+      callback: () => alert("Time's Up"),
+      mostSignificantFigure: 'd',
+      numberOfFigures: 6,
+      noAnimate: false,
+    };
+  } else {
+    console.log("Window is undefined");
   };
 
   return (
