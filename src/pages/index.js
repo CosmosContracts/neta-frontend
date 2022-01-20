@@ -158,7 +158,7 @@ const IndexPage = () => {
             <div className="space-y-6 mb-10">
               <div className="text-3xl md:text-4xl 2xl:text-5xl font-bold tracking-wide">
                 <p><span className="bg-gradient-to-r from-primaryLight to-primaryDark bg-clip-text text-transparent">NETA</span> Money</p>
-                <p>Airdrop Verifier</p>
+                <p>Airdrop Claim</p>
               </div>
               <h2 className="text-xl md:text-2xl 2xl:text-3xl font-medium tracking-wide">Decentralized Store of Value</h2>
             </div>
@@ -248,7 +248,7 @@ const IndexPage = () => {
                 <DateCountdown dateTo='March 01, 2022 00:00:00 UTC+00:00' mostSignificantFigure='day' />
               </div>
               <div className="font-bold text-xl md:text-2xl">
-                <p>Until <span className="bg-gradient-to-r from-primaryLight to-primaryDark text-transparent bg-clip-text">{totalToBurn} NETA</span> is burned</p>
+                <p>Until <span className="bg-gradient-to-r from-primaryLight to-primaryDark text-transparent bg-clip-text">{totalToBurn} NETA</span> is burned 🔥</p>
               </div>
             </div>
           </div>
