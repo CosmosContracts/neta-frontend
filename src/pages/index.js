@@ -6,7 +6,7 @@ import { connectKeplr } from "../utils/keplr";
 import LoadingButton from '@mui/lab/LoadingButton';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
-import DateCountdown from 'react-date-countdown-timer';
+import DateCountdown from '../utils/react-date-countdown-timer/src/index';
 
 import leftBlob from '../images/left.png';
 import rightBlob from '../images/right.png';
@@ -125,19 +125,15 @@ const IndexPage = () => {
     }
   };
   
-  if (typeof window !== `undefined`) {
-    DateCountdown.defaultProps = {
-      locales: ['y :', 'm :', 'd :', 'h :', 'm :', 's'],
-      locales_plural: ['y :', 'm :', 'd :', 'h :', 'm :', 's'],
-      dateTo: (new Date()).toString(),
-      dateFrom: (new Date()).toString(),
-      callback: () => alert("Time's Up"),
-      mostSignificantFigure: 'd',
-      numberOfFigures: 6,
-      noAnimate: false,
-    };
-  } else {
-    console.log("Window is undefined");
+  DateCountdown.defaultProps = {
+    locales: ['y :', 'm :', 'd :', 'h :', 'm :', 's'],
+    locales_plural: ['y :', 'm :', 'd :', 'h :', 'm :', 's'],
+    dateTo: (new Date()).toString(),
+    dateFrom: (new Date()).toString(),
+    callback: () => alert("Time's Up"),
+    mostSignificantFigure: 'd',
+    numberOfFigures: 6,
+    noAnimate: false,
   };
 
   return (
