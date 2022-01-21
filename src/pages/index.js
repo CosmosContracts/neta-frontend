@@ -15,7 +15,7 @@ import heroDivide from '../images/heroDivide.png';
 import checkMark from '../images/checkmark.png';
 import errorSign from '../images/errorSign.png';
 import netaCoin from '../images/netaCoin.png';
-import claimedLogo from '../images/claimedLogo.png';
+import claimedLogo from '../images/claimedLogo.svg';
 
 const IndexPage = () => {
 
@@ -157,8 +157,7 @@ const IndexPage = () => {
           <div className="2xl:col-span-5 mx-3 xl:mx-0 xl:ml-16 2xl:ml-0 text-center lg:text-left">
             <div className="space-y-6 mb-10">
               <div className="text-3xl md:text-4xl 2xl:text-5xl font-bold tracking-wide">
-                <p><span className="bg-gradient-to-r from-primaryLight to-primaryDark bg-clip-text text-transparent">NETA</span> Money</p>
-                <p>Airdrop Verifier</p>
+                <p><span className="bg-gradient-to-r from-primaryLight to-primaryDark bg-clip-text text-transparent">GovDrop</span> Claim</p>
               </div>
               <h2 className="text-xl md:text-2xl 2xl:text-3xl font-medium tracking-wide">Decentralized Store of Value</h2>
             </div>
@@ -209,8 +208,8 @@ const IndexPage = () => {
                   </div>
 
                     <div className="flex lg:flex-row flex-col space-y-4 lg:space-y-0 space-x-0 lg:space-x-4 justify-start items-center">
-                      <a href="https://neta.money/NETA_Money.pdf" target="_blank" rel="noopener noreferrer" className="gradient text-shadow py-3 px-5 w-68 flex justify-between rounded-full font-bold mx-auto lg:mx-0">
-                        NETA Paper
+                      <a href="https://neta.money/NETA_Money.pdf" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-primary2 to-primaryDark2 text-shadow py-3 px-5 w-68 flex justify-between rounded-full font-bold mx-auto lg:mx-0">
+                        NETA BlackPaper
                         <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path fill-rule="evenodd" clip-rule="evenodd" d="M2.84214 9.84465C2.53597 9.88843 2.29999 10.1651 2.29999 10.4998C2.29999 10.865 2.58083 11.161 2.92726 11.161H13.9533L9.97025 15.3424L9.90937 15.4165C9.72666 15.6749 9.74618 16.0423 9.96842 16.2775C10.2129 16.5362 10.61 16.5371 10.8555 16.2794L15.9066 10.9773C15.9367 10.9469 15.9639 10.9134 15.9878 10.8773C16.1587 10.6191 16.1346 10.2609 15.9155 10.0309L10.8555 4.72031L10.785 4.65645C10.539 4.46496 10.1906 4.48709 9.96838 4.72233C9.72394 4.98109 9.7248 5.39972 9.97029 5.65737L13.9543 9.83862H2.92726L2.84214 9.84465Z" fill="white" />
                         </svg>
@@ -248,7 +247,7 @@ const IndexPage = () => {
                 <DateCountdown dateTo='March 01, 2022 00:00:00 UTC+00:00' mostSignificantFigure='day' />
               </div>
               <div className="font-bold text-xl md:text-2xl">
-                <p>Until <span className="bg-gradient-to-r from-primaryLight to-primaryDark text-transparent bg-clip-text">{totalToBurn} NETA</span> is burned</p>
+                <p>Until <span className="bg-gradient-to-r from-primaryLight to-primaryDark text-transparent bg-clip-text">{totalToBurn} NETA</span> is burned 🔥</p>
               </div>
             </div>
           </div>
