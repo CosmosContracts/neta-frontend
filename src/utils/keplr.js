@@ -94,11 +94,6 @@ export const connectKeplr = async (chain) => {
     accounts[0].address
   );
 
-  const balance = await cosmJS.getBalance(
-    accounts[0].address,
-    chain.coinMinimalDenom
-  );
-
    console.log(cosmJS)
 
    return [cosmJS, accounts];
