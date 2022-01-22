@@ -19,7 +19,7 @@ const IndexPage = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [totalClaimed, setTotalClaimed] = useState(0);
-  const [totalToBurn, setTotalToBurn] = useState(0);
+  const [totalToBurn, setTotalToBurn] = useState(32950);
 
 
   // on load
@@ -263,9 +263,7 @@ const IndexPage = () => {
           <div className="absolute bottom-0">
             <div className="p-5 w-screen bg-[#121212] border-t-4 border-[#272727]">
               <div className="text-center flex flex-col justify-center items-center space-y-2 pt-3 lg:pt-0">
-                <p className="text-[#7A7A7A] font-semibold text-sm md:text-base">
-                  Copyright 2022 | All Rights Reserved by NETA
-                </p>
+
                 <div className="flex space-x-4 pt-3">
                   <a href="https://twitter.com/NetaMoney" target="_blank" rel="noopener noreferrer">
                     <svg className="fill-[#7A7A7A] hover:fill-primary trans" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
