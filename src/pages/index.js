@@ -1,13 +1,8 @@
-import { Alert, AlertTitle, Button, CircularProgress, Grid, Link, Stack, Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 import { connectKeplr } from "../utils/keplr";
-import LoadingButton from '@mui/lab/LoadingButton';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 import DateCountdown from '../utils/react-date-countdown-timer/src/index';
-
 import leftBlob from '../images/left.png';
 import rightBlob from '../images/right.png';
 import netaHeader from '../images/header.png';
@@ -148,7 +143,7 @@ const IndexPage = () => {
           <img src={netaHeader} alt="NETA" draggable="false" className="mx-auto w-3/5 md:w-fit" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-12 gap-2 mt-10 mb-20 lg:mt-16 lg:mb-48">
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-12 gap-2 mt-10 mb-20 lg:mt-16 lg:mb-20">
 
 
           <div className="hidden 2xl:block 3xl:col-span-2"></div>
@@ -184,7 +179,7 @@ const IndexPage = () => {
                           <p className="break-words w-11/12">{error}</p>
 
                           <div className="block">
-                            <img src={errorSign} />
+                            <img alt="errorImg" src={errorSign} />
                           </div>
 
                         </div>
@@ -197,7 +192,7 @@ const IndexPage = () => {
                           <p className="break-words w-11/12">{success.message}</p>
 
                           <div className="block">
-                            <img src={checkMark} />
+                            <img alt="checkImg" src={checkMark} />
                           </div>
 
                         </div>
@@ -231,9 +226,8 @@ const IndexPage = () => {
 
           <div className="hidden 2xl:block 3xl:hidden"></div>
 
-
-          <div className="2xl:col-span-3 text-center mx-auto flex flex-col items-center justify-center -mt-10 lg:-mt-40 px-3 xl:px-0">
-            <img src={netaCoin} alt="Picture of NETA Coin" draggable='false' className="mx-auto h-1/4 lg:h-2/5 3xl:h-1/2 xl:-mt-10" />
+          <div className="2xl:col-span-4 text-center mx-auto flex flex-col items-center justify-center -mt-10 lg:-mt-40 px-3 xl:px-0">
+            <img src={netaCoin} alt="NETA" draggable='false' className="mx-auto h-1/4 lg:h-2/5 3xl:h-1/2 xl:-mt-10" />
             <div className="xl:-mt-5 space-y-4">
               <p className="uppercase text-xl 2xl:text-2xl font-bold">
                 TOTAL CLAIMED SO FAR
