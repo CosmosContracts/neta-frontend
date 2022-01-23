@@ -11,6 +11,7 @@ export const checkExtensionAndBrowser = () => {
       return true;
     } else {
       console.log("Keplr extension not found", window);
+      throw(Error("Please use Chrome with Keplr extension."));
     }
   } else {
     console.log("Window is undefined :|", window);
@@ -92,11 +93,6 @@ export const connectKeplr = async (chain) => {
     chain.rpc,
     offlineSigner,
     accounts[0].address
-  );
-
-  const balance = await cosmJS.getBalance(
-    accounts[0].address,
-    chain.coinMinimalDenom
   );
 
    console.log(cosmJS)

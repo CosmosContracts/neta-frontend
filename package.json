@@ -14,8 +14,8 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@cosmjs/cosmwasm-stargate": "^0.27.0-rc2",
-    "@cosmjs/stargate": "^0.26.5",
+    "@cosmjs/cosmwasm-stargate": "^0.27.0",
+    "@cosmjs/stargate": "^0.27.0",
     "@emotion/react": "^11.7.1",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.6.0",
