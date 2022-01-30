@@ -3,7 +3,7 @@ import Layout from "../components/layout";
 import { connectKeplr } from "../utils/keplr";
 import { CosmWasmClient } from "@cosmjs/cosmwasm-stargate";
 import DateCountdown from '../utils/react-date-countdown-timer/src/index';
-
+import { Oval } from  '../utils/react-loader-spinner/src/index'
 import leftBlob from '../images/left.png';
 import rightBlob from '../images/right.png';
 import netaHeader from '../images/header.png';
@@ -15,6 +15,7 @@ import claimedLogo from '../images/claimedLogo.svg';
 
 const IndexPage = () => {
 
+  const [claiming, setClaiming] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [totalClaimed, setTotalClaimed] = useState(0);
@@ -45,6 +46,8 @@ const IndexPage = () => {
     try {
       setError(null);
       setSuccess(null);
+
+      setClaiming(true);
 
       const [signingClient, accounts] = await connectKeplr({
         name: process.env.GATSBY_CHAIN_NAME,
@@ -108,6 +111,8 @@ const IndexPage = () => {
         throw Error("Unknown error");
       }
 
+      setClaiming(false);
+
     } catch (error) {
       console.error(error.message);
 
@@ -116,6 +121,7 @@ const IndexPage = () => {
       } else {
         setError(error.message);
       }
+      setClaiming(false);
     }
   };
   
@@ -142,7 +148,7 @@ const IndexPage = () => {
           <img src={netaHeader} alt="NETA" draggable="false" className="mx-auto w-3/5 md:w-fit" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-12 gap-2 mt-10 mb-20 lg:mt-16 lg:mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-12 gap-2 mt-10 mb-20 lg:mt-16 lg:mb-48">
 
 
           <div className="hidden 2xl:block 3xl:col-span-2"></div>
@@ -165,12 +171,21 @@ const IndexPage = () => {
                 <p className="text-altText font-semibold text-base 2xl:text-lg">To claim the airdrop, press the button below to connect your Keplr wallet.</p>
                 <div className="pt-8 lg:pt-5 space-y-4">
                   <div className="flex lg:flex-row flex-col space-y-4 lg:space-y-0 space-x-0 lg:space-x-4 justify-start items-center">
-                    <button onClick={claim} className="gradient text-shadow py-3 px-5 min-w-[17rem] flex justify-between rounded-full font-bold mx-auto lg:mx-0" >
+                    {!claiming &&
+                      <button onClick={claim} className="gradient text-shadow py-3 px-4 min-w-[17rem] flex justify-between rounded-full font-bold mx-auto lg:mx-0" >
+                        Connect Wallet & Claim
+                        <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" clipRule="evenodd" d="M2.84214 9.84465C2.53597 9.88843 2.29999 10.1651 2.29999 10.4998C2.29999 10.865 2.58083 11.161 2.92726 11.161H13.9533L9.97025 15.3424L9.90937 15.4165C9.72666 15.6749 9.74618 16.0423 9.96842 16.2775C10.2129 16.5362 10.61 16.5371 10.8555 16.2794L15.9066 10.9773C15.9367 10.9469 15.9639 10.9134 15.9878 10.8773C16.1587 10.6191 16.1346 10.2609 15.9155 10.0309L10.8555 4.72031L10.785 4.65645C10.539 4.46496 10.1906 4.48709 9.96838 4.72233C9.72394 4.98109 9.7248 5.39972 9.97029 5.65737L13.9543 9.83862H2.92726L2.84214 9.84465Z" fill="white" />
+                        </svg>
+                      </button>
+                    }
+
+                    {claiming &&
+                      <button disabled={true} className="bg-gradient-to-r from-primaryLight to-primaryDark text-shadow py-3 px-4 min-w-[17rem] flex justify-between rounded-full font-bold mx-auto lg:mx-0" >
                       Connect Wallet & Claim
-                      <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M2.84214 9.84465C2.53597 9.88843 2.29999 10.1651 2.29999 10.4998C2.29999 10.865 2.58083 11.161 2.92726 11.161H13.9533L9.97025 15.3424L9.90937 15.4165C9.72666 15.6749 9.74618 16.0423 9.96842 16.2775C10.2129 16.5362 10.61 16.5371 10.8555 16.2794L15.9066 10.9773C15.9367 10.9469 15.9639 10.9134 15.9878 10.8773C16.1587 10.6191 16.1346 10.2609 15.9155 10.0309L10.8555 4.72031L10.785 4.65645C10.539 4.46496 10.1906 4.48709 9.96838 4.72233C9.72394 4.98109 9.7248 5.39972 9.97029 5.65737L13.9543 9.83862H2.92726L2.84214 9.84465Z" fill="white" />
-                      </svg>
-                    </button>
+                      <Oval color="#00BFFF" height={18} width={18} />
+                      </button>
+                    }
 
                     {error &&
                       <div className="block bg-[#353131] text-shadow py-1 px-1 mx-auto rounded-full lg:mx-0" >
@@ -202,7 +217,7 @@ const IndexPage = () => {
                   </div>
 
                     <div className="flex lg:flex-row flex-col space-y-4 lg:space-y-0 space-x-0 lg:space-x-4 justify-start items-center">
-                      <a href="https://neta.money/NETA_Money.pdf" target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-primary2 to-primaryDark2 text-shadow py-3 px-5 w-68 flex justify-between rounded-full font-bold mx-auto lg:mx-0">
+                      <a href="https://neta.money/NETA_Money.pdf" target="_blank" rel="noopener noreferrer" className="gradient2 text-shadow py-3 px-4 w-68 flex justify-between rounded-full font-bold mx-auto lg:mx-0">
                         NETA BlackPaper
                         <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path fillRule="evenodd" clipRule="evenodd" d="M2.84214 9.84465C2.53597 9.88843 2.29999 10.1651 2.29999 10.4998C2.29999 10.865 2.58083 11.161 2.92726 11.161H13.9533L9.97025 15.3424L9.90937 15.4165C9.72666 15.6749 9.74618 16.0423 9.96842 16.2775C10.2129 16.5362 10.61 16.5371 10.8555 16.2794L15.9066 10.9773C15.9367 10.9469 15.9639 10.9134 15.9878 10.8773C16.1587 10.6191 16.1346 10.2609 15.9155 10.0309L10.8555 4.72031L10.785 4.65645C10.539 4.46496 10.1906 4.48709 9.96838 4.72233C9.72394 4.98109 9.7248 5.39972 9.97029 5.65737L13.9543 9.83862H2.92726L2.84214 9.84465Z" fill="white" />
@@ -210,7 +225,7 @@ const IndexPage = () => {
                       </a>
 
                     {success &&
-                      <a href={`https://mintscan.io/juno/txs/${success.hash}`} target="_blank" className="block font-bold text-shadow px-5" rel="noopener noreferrer">
+                      <a href={`https://mintscan.io/juno/txs/${success.hash}`} target="_blank" className="block font-bold underline text-shadow px-5" rel="noopener noreferrer">
                         View on Mintscan
                       </a>
                     }
@@ -226,7 +241,7 @@ const IndexPage = () => {
           <div className="hidden 2xl:block 3xl:hidden"></div>
 
 
-          <div className="2xl:col-span-4 text-center mx-auto flex flex-col items-center justify-center -mt-10 lg:-mt-40 px-3 xl:px-0">
+          <div className="2xl:col-span-3 text-center mx-auto flex flex-col items-center justify-center -mt-10 lg:-mt-40 px-3 xl:px-0">
             <img src={netaCoin} alt="NETA Coin" draggable='false' className="mx-auto h-1/4 lg:h-2/5 3xl:h-1/2 xl:-mt-10" />
             <div className="xl:-mt-5 space-y-4">
               <p className="uppercase text-xl 2xl:text-2xl font-bold">
