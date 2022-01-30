@@ -38,7 +38,7 @@ const IndexPage = () => {
       }
 
     }
-
+    document.title = "NETA - Decentralized Store of Value"
     load();
   }, []);
 
@@ -241,7 +241,7 @@ const IndexPage = () => {
           <div className="hidden 2xl:block 3xl:hidden"></div>
 
 
-          <div className="2xl:col-span-4 text-center mx-auto flex flex-col items-center justify-center -mt-10 lg:-mt-40 px-3 xl:px-0">
+          <div className="2xl:col-span-3 text-center mx-auto flex flex-col items-center justify-center -mt-10 lg:-mt-40 px-3 xl:px-0">
             <img src={netaCoin} alt="NETA Coin" draggable='false' className="mx-auto h-1/4 lg:h-2/5 3xl:h-1/2 xl:-mt-10" />
             <div className="xl:-mt-5 space-y-4">
               <p className="uppercase text-xl 2xl:text-2xl font-bold">
