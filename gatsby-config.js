@@ -8,6 +8,7 @@ module.exports = {
     title: "NETA Money | Decentralized Store of Value",
   },
   plugins: [
+    'gatsby-plugin-postcss',
     "gatsby-plugin-material-ui",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
