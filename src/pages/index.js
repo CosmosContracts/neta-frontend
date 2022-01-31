@@ -76,10 +76,6 @@ const IndexPage = () => {
         throw Error("This address is not eligible. Try connecting another address from Keplr");
       }
 
-      if (new Date() < new Date("2022-02-01 00:00:00")) {
-        throw Error(`You are entitled for ${(claimData.amount / 1000000).toFixed(2)} NETA! Come back on February 1st.`)
-      }
-
       // Format message
       const msg = {
         claim: {
