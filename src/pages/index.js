@@ -179,7 +179,7 @@ const IndexPage = () => {
                     {claiming &&
                       <button disabled={true} className="bg-gradient-to-r from-primaryLight to-primaryDark text-shadow py-3 px-4 min-w-[17rem] flex justify-between rounded-full font-bold mx-auto lg:mx-0" >
                       Connect Wallet & Claim
-                      <Oval color="#00BFFF" height={18} width={18} />
+                      <Oval color="#FFFFFF" height={18} width={18} />
                       </button>
                     }
 
