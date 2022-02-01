@@ -31,7 +31,7 @@ const IndexPage = () => {
 
         if (data.total_claimed > 0) {
           setTotalClaimed(data.total_claimed / 1000000);
-          setTotalToBurn(32950-data.total_claimed/1000000);
+          setTotalToBurn(Number(32950-data.total_claimed/1000000).toFixed(1));
         }
       } catch (error) {
         console.error(error);
