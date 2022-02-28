@@ -164,15 +164,15 @@ const IndexPage = () => {
                 <p>All unclaimed NETA will automatically be permanently burned on February 28th, 2022.</p>
               </div>
               <div>
-                {(new Date() > new Date("2022-03-01 00:00:00")) &&
+                {(new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60000) > new Date("2022-03-01 00:00:00")) &&
                   <p className="text-altText font-semibold text-base 2xl:text-lg">Airdrop claiming window has closed.</p>
                 }
-                {!(new Date() > new Date("2022-03-01 00:00:00")) &&
+                {!(new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60000) > new Date("2022-03-01 00:00:00")) &&
                   <p className="text-altText font-semibold text-base 2xl:text-lg">To claim the airdrop, press the button below to connect your Keplr wallet.</p>
                 }
                 <div className="pt-8 lg:pt-5 space-y-4">
                   <div className="flex lg:flex-row flex-col space-y-4 lg:space-y-0 space-x-0 lg:space-x-4 justify-start items-center">
-                    {!claiming && !(new Date() > new Date("2022-03-01 00:00:00")) &&
+                    {!claiming && !(new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60000) > new Date("2022-03-01 00:00:00")) &&
                       <button onClick={claim} className="gradient text-shadow py-3 px-4 min-w-[17rem] flex justify-between rounded-full font-bold mx-auto lg:mx-0" >
                         Connect Wallet & Claim
                         <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -181,7 +181,7 @@ const IndexPage = () => {
                       </button>
                     }
 
-                    {(new Date() > new Date("2022-03-01 00:00:00")) &&
+                    {(new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60000) > new Date("2022-03-01 00:00:00")) &&
                       <button disabled={true} className="bg-gradient-to-r from-primaryLight to-primaryDark text-shadow py-3 px-4 min-w-[17rem] flex justify-between rounded-full font-bold mx-auto lg:mx-0" >
                         Connect Wallet & Claim
                         <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -266,10 +266,10 @@ const IndexPage = () => {
                 <DateCountdown dateTo='March 01, 2022 00:00:00 UTC+00:00' mostSignificantFigure='day' />
               </div>
               <div className="font-bold text-xl md:text-2xl">
-                {!(new Date() > new Date("2022-03-01 00:00:00")) &&
+                {!(new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60000) > new Date("2022-03-01 00:00:00")) &&
                   <p>Until <span className="bg-gradient-to-r from-primaryLight to-primaryDark text-transparent bg-clip-text">{totalToBurn} NETA</span> is burned 🔥</p>
                 }
-                {(new Date() > new Date("2022-03-01 00:00:00")) &&
+                {(new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60000) > new Date("2022-03-01 00:00:00")) &&
                   <p><span className="bg-gradient-to-r from-primaryLight to-primaryDark text-transparent bg-clip-text">{totalToBurn} NETA</span> has been burned 🔥</p>
                 }
               </div>
