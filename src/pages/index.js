@@ -18,8 +18,8 @@ const IndexPage = () => {
   const [claiming, setClaiming] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
-  const [totalClaimed, setTotalClaimed] = useState(22731400000 / 1000000);
-  const [totalToBurn, setTotalToBurn] = useState(Number(32950-22731000000/1000000).toFixed(1));
+  const [totalClaimed, setTotalClaimed] = useState(0);
+  const [totalToBurn, setTotalToBurn] = useState(32950);
 
 
   // on load
@@ -29,10 +29,10 @@ const IndexPage = () => {
         var client = await CosmWasmClient.connect(process.env.GATSBY_CHAIN_RPC);
         var data = await client.queryContractSmart(process.env.GATSBY_CONTRACT_ADDRESS, { total_claimed: { stage: 1 } });
 
-        // if (data.total_claimed > 0) {
-        setTotalClaimed(227314100000 / 1000000);
-        setTotalToBurn(32950-227314100000/1000000);
-        // }
+        if (data.total_claimed > 0) {
+          setTotalClaimed(data.total_claimed / 1000000);
+          setTotalToBurn(Number(32950-data.total_claimed/1000000).toFixed(1));
+        }
       } catch (error) {
         console.error(error);
       }
